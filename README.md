@@ -14,7 +14,7 @@ identificación y control de usuarios.
 |No.|Fecha|Descripción|Potenciadores|Estatus|
 |--|--|--|--|--|
 |8.|17/10/2024|Nuevo repositorio del Proyecto Implementando .gitignore|1|✅Activa|
-|9.|22/10/2024|Creación de una Aplicación web usando Express|2|✅Activa|
+|9.|22/10/2024|Creación de una Aplicación web usando Express|12|✅Activa|
 
 ## Autor
 Jonathan Emmanuel Lópes Morales
