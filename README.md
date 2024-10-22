@@ -21,3 +21,6 @@ Jonathan Emmanuel Lópes Morales
 Unidad 2
 Apliaciones Web Orientada a Servicios
 Septiembre 2024
+
+### Tech Stack
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
