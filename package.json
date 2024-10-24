@@ -35,6 +35,7 @@
   "homepage": "https://github.com/Jonathan2536/BienesRaices_230318#readme",
   "dependencies": {
     "express": "^4.21.1",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "pug": "^3.0.3"
   }
 }
