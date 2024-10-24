@@ -13,7 +13,7 @@ app.set('views', './views');
 const port = 3000;
 
 app.listen(port, () => 
-    console.log(`La aplicación ha iniciado en el puerto ${port}`)
+    console.log(`la aplicación ha iniciado en el puerto ${port}`)
 );
 
 app.use("/", generalRoutes);
