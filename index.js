@@ -18,7 +18,7 @@ app.get("/", function(req, res){
     res.send("Hola desde la web, en NodeJS");
 });
 
-app.get("/quien eres", function(req, res){
+app.get("/quieneres", function(req, res){
     res.json(
         {
             "nombre" :"Jonathan",
