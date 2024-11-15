@@ -1,20 +1,21 @@
-import generalRoutes from './Routes/generalRoutes.js';
-import userRoutes from './Routes/userRoutes.js';
 import express from 'express';
+import usuarioRoutes from './routes/userRoutes.js'
 
+//Crear la app
 const app = express();
 
-//Configrrar Templante Engine = PUG
+//Routing
+app.use('/auth',usuarioRoutes)
 
-app.set('view engine', 'pug');
-app.set('views', './views');
+//Habilitar pug
+app.set('view engine','pug')
+app.set('Views','/.Views')
 
+//Carpeta Publica
+app.use(express.static('Public'))
 
+// Definir un puerto y arrancar el proyecto
 const port = 3000;
-
-app.listen(port, () => 
-    console.log(`la aplicación ha iniciado en el puerto ${port}`)
-);
-
-app.use("/", generalRoutes);
-app.use("/usuario", userRoutes);
+app.listen(port, () => {
+    console.log(`La aplicación se ha iniciado en el puerto ${port}`);
+});
