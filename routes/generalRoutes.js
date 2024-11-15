@@ -1,3 +1,4 @@
+
 import express from "express";
 const router = express.Router(); // Cambié a 'router' para evitar conflictos
 
@@ -14,4 +15,7 @@ router.get("/quieneres", function(req, res) { // Cambié el nombre de la ruta a 
     });
 });
 
-export default router;
+git 
+
+export default router; 
+//esta palabra reservadade JS me permite exportar a los elementos

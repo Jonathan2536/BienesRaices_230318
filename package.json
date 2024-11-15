@@ -1,12 +1,13 @@
 {
   "name": "bienesraices",
   "version": "1.0.0",
-  "description": "Proyecto de Clase para la unidad 2, de la asignatura A WOS alctalizando No",
+  "description": "Proyecto de Clase para la unidad 2, de la asignatura A WOS actualizando No",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "saluda": "node saluda.js",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "css": "postcss Public/css/tailwind.css -o Public/css/app.css --watch"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
     "MVC",
     "Express",
     "Sequelize",
-    "MuSQL.",
+    "MySQL",
     "TailwindCSS",
     "Nodemon",
     "No",
@@ -37,5 +38,13 @@
     "express": "^4.21.1",
     "nodemon": "^3.1.7",
     "pug": "^3.0.3"
+
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.15"
+
   }
 }

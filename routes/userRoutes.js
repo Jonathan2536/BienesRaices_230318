@@ -1,3 +1,4 @@
+
 import express, { request, response } from 'express';
 const router = express.Router();
 
@@ -34,8 +35,3 @@ router.delete("/deleteUser/:email", function(request, response) {
 
 
 
-router.get("/login",function(request,response){//Petición callback
-    response.render('auth/login')
-    });
-    
-export default router;
