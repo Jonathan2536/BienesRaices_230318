@@ -7,7 +7,7 @@
   "scripts": {
     "saluda": "node saluda.js",
     "server": "nodemon index.js",
-    "css": "postcss Public/css/tailwind.css -o Public/css/app.css"
+    "css": "postcss Public/css/tailwind.css -o Public/css/app.css --watch"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,8 @@
   "homepage": "https://github.com/Jonathan2536/BienesRaices_230318#readme",
   "dependencies": {
     "express": "^4.21.1",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "pug": "^3.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

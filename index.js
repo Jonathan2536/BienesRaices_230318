@@ -5,29 +5,28 @@
 // Importar la librería para crear un servidor web - CommonJS / ECHA script
 // Insertar nuestra aplicación web 
 
-import express from "express";
+import express from 'express';
+import usuarioRoutes from './routes/userRoutes.js'
+
+//Crear la app
 const app = express();
 
+//Routing
+app.use('/auth',usuarioRoutes)
+
+//Habilitar pug
+app.set('view engine','pug')
+app.set('Views','/.Views')
+
+//Carpeta Publica
+app.use(express.static('Public'))
+
+// Definir un puerto y arrancar el proyecto
 const port = 3000;
-
-app.listen(port, ()=>{
-    console.log(`La aplicación ha iniciado en el puerto: ${port}`);
+app.listen(port, () => {
+    console.log(`La aplicación se ha iniciado en el puerto ${port}`);
 });
 
-app.get("/", function(req, res){
-    res.send("Hola desde la web, en NodeJS");
-});
-
-app.get("/quieneres", function(req, res){
-    res.json(
-        {
-            "nombre" :"Jonathan",
-            "carrera":"ti dsm",
-            "grado":"4",
-            "grupo":"A"
-        }
-    )
-})
 // Configura el puerto por donde va a pasar el servidor
 
 // ¿Qué es una clase?
