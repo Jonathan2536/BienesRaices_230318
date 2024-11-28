@@ -1,31 +1,41 @@
-import express from 'express'; // Una sola importación de express
-import generalRoutes from './routes/generalRoutes.js';
-import usuarioRoutes from './routes/userRoutes.js';
-
-// Crear la app
+import express from 'express';
+import csurf from 'csurf';
+import cookieParser from 'cookie-parser';
+import usuarioRoutes from './routes/userRoutes.js'
+import db from './Config/db.js'
+//Crear la app
 const app = express();
 
-// Configurar el motor de plantillas Pug
-app.set('view engine', 'pug');
-app.set('views', './views');  // Corregir el nombre de la carpeta 'Views' por 'views' (caso sensible)
+//Habilitar lectura de datos del formulario
+app.use(express.urlencoded({extended:true}))
 
-const port = 3000;
+//Habilitar cookie-parser
+app.use(cookieParser())
 
-// Configurar las rutas
-app.use("/", generalRoutes);
-app.use("/usuario", usuarioRoutes);
+//Habilitar CSRF
+app.use(csurf({cookie:true}))
 
-// Habilitar la carpeta pública
-app.use(express.static('Public'));
+//Routing
+app.use('/auth',usuarioRoutes)
 
-// Iniciar el servidor en el puerto
+//Conexion a la bd
+try{
+    await db.authenticate();
+    db.sync()
+    console.log('Conexion Correcta a la Base de datos')
+}catch(error){
+    console.log(error)
+}
+
+//Habilitar pug
+app.set('view engine','pug')
+app.set('Views','/.Views')
+
+//Carpeta Publica
+app.use(express.static('Public'))
+
+// Definir un puerto y arrancar el proyecto
+const port =process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`La aplicación se ha iniciado en el puerto ${port}`);
 });
-
-
-// Configura el puerto por donde va a pasar el servidor
-
-// ¿Qué es una clase?
-// ¿Qué es una instancia?
-//Nose
