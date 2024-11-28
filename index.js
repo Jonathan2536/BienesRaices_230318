@@ -1,4 +1,5 @@
 import express from 'express';
+<<<<<<< HEAD
 import csurf from 'csurf';
 import cookieParser from 'cookie-parser';
 import usuarioRoutes from './routes/userRoutes.js'
@@ -39,3 +40,25 @@ const port =process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`La aplicación se ha iniciado en el puerto ${port}`);
 });
+=======
+import usuarioRoutes from './routes/userRoutes.js'
+
+//Crear la app
+const app = express();
+
+//Routing
+app.use('/auth',usuarioRoutes)
+
+//Habilitar pug
+app.set('view engine','pug')
+app.set('Views','/.Views')
+
+//Carpeta Publica
+app.use(express.static('Public'))
+
+// Definir un puerto y arrancar el proyecto
+const port = 3000;
+app.listen(port, () => {
+    console.log(`La aplicación se ha iniciado en el puerto ${port}`);
+});
+>>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade

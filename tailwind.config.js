@@ -3,6 +3,7 @@ module.exports = {
   content: ['./Views/**/*.pug'],
   theme: {
     extend: {},
+<<<<<<< HEAD
     colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -27,6 +28,8 @@ module.exports = {
         },
       // Corregido para evitar el espacio en el nombre
     },
+=======
+>>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade
   },
   plugins: [],
 };

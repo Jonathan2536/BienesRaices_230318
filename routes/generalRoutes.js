@@ -15,7 +15,10 @@ router.get("/quieneres", function(req, res) { // Cambié el nombre de la ruta a 
     });
 });
 
+<<<<<<< HEAD
 git 
 
+=======
+>>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade
 export default router; 
 //esta palabra reservadade JS me permite exportar a los elementos
