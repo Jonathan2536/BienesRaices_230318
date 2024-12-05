@@ -1,18 +1,14 @@
-<<<<<<< HEAD
 import { check ,validationResult } from 'express-validator'
 import Usuario from '../models/Usuario.js'
 import {generarId} from '../Helpers/tokens.js'
 import {emailRegistro} from '../Helpers/emails.js'
 import { where } from 'sequelize'
-=======
->>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade
 const formularioLogin = (req,res) => {
     res.render('auth/login',{
          pagina : 'IniciarSesión'
     })
 }
 const formularioRegistro = (req,res) => {
-<<<<<<< HEAD
 
     res.render('auth/registro',{
         pagina : 'Crear Cuenta',
@@ -108,12 +104,6 @@ const registrar = async (req,res) => {
         })
         }
 
-=======
-    res.render('auth/registro',{
-        pagina : 'Crear cuenta'
-    })
-}
->>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade
 const formularioPassword = (req,res) => {
     res.render('auth/password',{
         pagina : 'Ruecupera Tu Contraseña'
@@ -122,10 +112,7 @@ const formularioPassword = (req,res) => {
 export {
     formularioLogin,
     formularioRegistro,
-<<<<<<< HEAD
     registrar,
     confirmar,
-=======
->>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade
     formularioPassword
 }

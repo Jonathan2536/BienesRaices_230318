@@ -34,22 +34,24 @@
     "url": "https://github.com/Jonathan2536/BienesRaices_230318/issues"
   },
   "homepage": "https://github.com/Jonathan2536/BienesRaices_230318#readme",
-  "dependencies": {
+ "dependencies": {
+    "2": "^3.0.0",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
-    "csurf": "^1.10.0",
+    "css": "^3.0.0",
+    "csurf": "^1.11.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "express-validator": "^7.2.0",
+    "i": "^0.3.7",
+    "mysql": "^2.18.1",
     "mysql2": "^3.11.4",
     "nodemailer": "^6.9.16",
     "nodemon": "^3.1.7",
-<<<<<<< HEAD
     "pug": "^3.0.3",
-    "sequelize": "^6.37.5"
-=======
-    "pug": "^3.0.3"
->>>>>>> 9cfcfc021207d18e12e26799a634ed30b7b21ade
+    "sequelize": "^6.37.5",
+    "tailwind": "^4.0.0",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
