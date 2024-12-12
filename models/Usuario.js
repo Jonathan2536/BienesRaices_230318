@@ -8,6 +8,10 @@ const Usuario = db.define('usuarios',{
         type : DataTypes.STRING,
         allowNull: false
     },
+    fecha: { 
+        type: DataTypes.DATE,
+        allowNull: true 
+    },
     email : {
         type : DataTypes.STRING,
         allowNull: false
@@ -16,10 +20,9 @@ const Usuario = db.define('usuarios',{
         type : DataTypes.STRING,
         allowNull: false
     },
-    token : {
-        type : DataTypes.STRING,
-        confirmado : DataTypes.BOOLEAN        
-    }
+    token : DataTypes.STRING,
+    confirmado : DataTypes.BOOLEAN        
+
 },{
     hooks : {
         beforeCreate:  async  function (usuario){

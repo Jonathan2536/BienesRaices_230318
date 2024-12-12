@@ -2,21 +2,32 @@ extends ../layout/index
 
 block contenido
     div.py-2
-    h1.text-4xl.my-10.font-extrabold.text-center.text-azulMunsell Bienes
-        span.front-normal.text-azulClaro Raices
-    h2.text-center.text-2xl.font-extrabold.text-azulPrusia= pagina   
+        h1.text-4xl.my-10.font-extrabold.text-center.text-azulMunsell Bienes
+            span.front-normal.text-azulClaro Raices
+        h2.text-center.text-2xl.font-extrabold.text-azulPrusia= pagina   
+
     div.mt-8.mx-auto.max-w-md
         .bg-blanco.py-8.px-4.shadow
-            form.space-y-5                    
+            form.space-y-5(method="POST" action="/auth/login")
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Email de Registro :
                     input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Email" type="email" name="email")
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Contraseña :
                     input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Contraseña" type="password" name="password")
-                div.flex.items-center.justify-between.mb-4
+                div.flex.items-center.justify-between.mb-5
                     a.text-gray-500.text-xs(href="/auth/registro" class="hover:underline hover:decoration-2 hover:decoration-indigo-600") ¿No tienes una cuenta? Crea una
                     a.text-gray-500.text-xs(href='/auth/password' class="hover:underline hover:decoration-2 hover:decoration-indigo-600") Olvide mi Contraseña
 
-
-                input(class="w-full bg-azulMunsell hover:bg-azulClaro text-blanco font-bold py-3 cursor-pointer"  type="submit" value="Iniciar Sesion")    
+                input(class="w-full bg-azulMunsell hover:bg-azulClaro text-blanco font-bold py-3 cursor-pointer" type="submit" value="Iniciar Sesion")    
+            br
+            br
+            br
+    footer.bg-azulPrusia.text-blanco.py-6
+        .container.mx-auto.text-center
+            p.text-sm
+                | © 2024 BienesRaices_230318. Todos los derechos reservados.
+            div.mt-3
+                a.text-blanco.mr-4(href="/contacto" class="hover:underline") Contacto
+                a.text-blanco.mr-4(href="/terminos" class="hover:underline") Términos
+                a.text-blanco.mr-4(href="/privacidad" class="hover:underline") Política de Privacidad
