@@ -1,33 +1,86 @@
 extends ../layout/index
 
 block contenido
-    div.py-2
-        h1.text-4xl.my-10.font-extrabold.text-center.text-azulMunsell Bienes
-            span.front-normal.text-azulClaro Raices
-        h2.text-center.text-2xl.font-extrabold.text-azulPrusia= pagina   
+  div.py-2
+    h1.text-4xl.my-10.font-extrabold.text-center.text-darkBrown Bienes
+      span.font-normal.text-beige Raices
+    h2.text-center.text-2xl.font-extrabold.text-lightBrown= pagina
 
-    div.mt-8.mx-auto.max-w-md
-        .bg-blanco.py-8.px-4.shadow
-            form.space-y-5(method="POST" action="/auth/login")
-                div
-                    label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Email de Registro :
-                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Tu Email" type="email" name="email")
-                div
-                    label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Contraseña :
-                    input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Contraseña" type="password" name="password")
-                div.flex.items-center.justify-between.mb-5
-                    a.text-gray-500.text-xs(href="/auth/registro" class="hover:underline hover:decoration-2 hover:decoration-indigo-600") ¿No tienes una cuenta? Crea una
-                    a.text-gray-500.text-xs(href='/auth/password' class="hover:underline hover:decoration-2 hover:decoration-indigo-600") Olvide mi Contraseña
+  // Verificar si hay errores para mostrar
+  if errores
+    style.
+      .fade-error {
+        transition: opacity 1s ease-in-out;
+        background-color: #f87171; /* Color rojo para los errores */
+        color: white;
+        border-radius: 4px;
+        padding: 8px;
+        margin-bottom: 5px;
+        text-align: center;
+      }
 
-                input(class="w-full bg-azulMunsell hover:bg-azulClaro text-blanco font-bold py-3 cursor-pointer" type="submit" value="Iniciar Sesion")    
-            br
-            br
-            br
-    footer.bg-azulPrusia.text-blanco.py-6
-        .container.mx-auto.text-center
-            p.text-sm
-                | © 2024 BienesRaices_230318. Todos los derechos reservados.
-            div.mt-3
-                a.text-blanco.mr-4(href="/contacto" class="hover:underline") Contacto
-                a.text-blanco.mr-4(href="/terminos" class="hover:underline") Términos
-                a.text-blanco.mr-4(href="/privacidad" class="hover:underline") Política de Privacidad
+    script.
+      setTimeout(function() {
+        const errorMessages = document.querySelectorAll('.fade-error');
+        errorMessages.forEach((message, index) => {
+          setTimeout(() => {
+            message.style.opacity = '0'; 
+            setTimeout(() => {
+              message.style.display = 'none'; 
+            }, 1000); 
+          }, index * 2000); 
+        });
+      }, 1500);
+
+  // Mostrar mensajes de error
+  if errores
+    div(class="max-w-md mx-auto my-10")
+      each error in errores
+        p.fade-error!= error.msg
+
+  div.mt-8.mx-auto.max-w-md
+    .bg-white.py-8.px-4.shadow
+      // Formulario de inicio de sesión
+      form.space-y-5(method="POST" action="/auth/login")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        div
+          label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Email de Registro:
+          input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(
+            placeholder="Tu Email" 
+            type="email" 
+            name="email"
+          )
+        div
+          label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Contraseña:
+          input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(
+            placeholder="Contraseña" 
+            type="password" 
+            name="password"
+          )
+        div.flex.items-center.justify-between.mb-5
+          a.text-gray-500.text-xs(
+            href="/auth/registro" 
+            class="hover:underline hover:decoration-2 hover:decoration-indigo-600"
+          ) ¿No tienes una cuenta? Crea una
+          a.text-gray-500.text-xs(
+            href="/auth/password" 
+            class="hover:underline hover:decoration-2 hover:decoration-indigo-600"
+          ) Olvide mi Contraseña
+        input(
+          class="w-full bg-darkBrown hover:bg-lightBrown text-white font-bold py-3 cursor-pointer" 
+          type="submit" 
+          value="Iniciar Sesion"
+        )    
+      br
+      br
+      br
+
+  // Sección de pie de página
+  footer.bg-lightBrown.text-white.py-6
+    .container.mx-auto.text-center
+      p.text-sm
+        | © 2024 BienesRaices_230417. Todos los derechos reservados.
+      div.mt-3
+        a.text-white.mr-4(href="/contacto" class="hover:underline") Contacto
+        a.text-white.mr-4(href="/terminos" class="hover:underline") Términos
+        a.text-white.mr-4(href="/privacidad" class="hover:underline") Política de Privacidad

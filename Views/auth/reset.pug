@@ -2,12 +2,12 @@ extends ../layout/index
 
 block contenido
     div.py-2
-        h1.text-4xl.my-10.font-extrabold.text-center.text-azulMunsell Bienes
-            span.font-normal.text-azulClaro Raices
-        h2.text-center.text-2xl.font-extrabold.text-azulPrusia= pagina
+        h1.text-4xl.my-10.font-extrabold.text-center.text-lightBrown Bienes
+            span.font-normal.text-beige Raices
+        h2.text-center.text-2xl.font-extrabold.text-darkBrown= pagina
 
     div.mt-8.mx-auto.max-w-md
-        .bg-blanco.py-8.px-4.shadow
+        .bg-white.py-8.px-4.shadow
             if errores
                 // Estilos y script para manejar los mensajes de error
                 style.
@@ -31,7 +31,7 @@ block contenido
                     each error in errores
                         p.bg-error.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold.fade-error!= error.msg
 
-            form.space-y-5(method="POST"  noValidate)
+            form.space-y-5(method="POST" noValidate)
                 input(type="hidden" name="_csrf" value=csrfToken)
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Nueva contraseña:
@@ -49,7 +49,7 @@ block contenido
                     )
             
                 input(
-                    class="w-full bg-azulMunsell hover:bg-azulClaro text-blanco font-bold py-3 cursor-pointer"
+                    class="w-full bg-lightBrown hover:bg-beige text-white font-bold py-3 cursor-pointer"
                     type="submit"
                     value="Cambiar contraseña"
                 )
