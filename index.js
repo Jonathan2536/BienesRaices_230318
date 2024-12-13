@@ -1,7 +1,8 @@
 import express from 'express';
 import csurf from 'csurf';
 import cookieParser from 'cookie-parser';
-import usuarioRoutes from './routes/userRoutes.js'
+import usuarioRoutes from './Routes/usuarioRoutes.js'
+import propiedadesRoutes from './Routes/propiedadesRoutes.js'
 import db from './Config/db.js'
 //Crear la app
 const app = express();
@@ -17,6 +18,7 @@ app.use(csurf({cookie:true}))
 
 //Routing
 app.use('/auth',usuarioRoutes)
+app.use('/',propiedadesRoutes)
 
 //Conexion a la bd
 try{
