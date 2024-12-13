@@ -6,7 +6,7 @@ import propiedadesRoutes from './Routes/propiedadesRoutes.js'
 import db from './Config/db.js'
 //Crear la app
 const app = express();
-
+//Comentario para fusion 
 //Habilitar lectura de datos del formulario
 app.use(express.urlencoded({extended:true}))
 
