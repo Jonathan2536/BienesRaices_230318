@@ -5,29 +5,62 @@ block contenido
     h1.text-4xl.my-10.font-extrabold.text-center.text-azulMunsell Bienes
         span.front-normal.text-azulClaro Raices
     h2.text-center.text-2xl.font-extrabold.text-azulPrusia= pagina
+    
     if errores
-        div(class="max-w-md mx-auto my-10")
-            each error in errores
-                p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold= error.msg
+      style.
+        .fade-error{
+          transition: opacity 1s ease-in-out;
+        }
+      script.
+        setTimeout(function() {
+          const errorMessages = document.querySelectorAll('.fade-error');
+          errorMessages.forEach((message, index) => {
+            setTimeout(() => {
+              message.style.opacity = '0'; 
+              setTimeout(() => {
+                message.style.display = 'none'; 
+              }, 1000); 
+            }, index * 2000); 
+          });
+        }, 1500);
+
+    if errores
+      div(class="max-w-md mx-auto my-10")
+        each error in errores
+          p.bg-error.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold.fade-error!= error.msg
+
     div.mt-8.mx-auto.max-w-md
         .bg-blanco.py-8.px-4.shadow
             form.space-y-5(method="POST" action="/auth/registro" noValidate)
-                input(type="hidden" name="_csrf" value=csrfToken)                    
+                input(type="hidden" name="_csrf" value=csrfToken)
+                
+                // Nombre
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Tu Nombre :
-                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre" type="text" name="nombre" value= usuario ? usuario.nombre : '')
+                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre" type="text" name="nombre" value= usuario ? usuario.nombre : '' class=errores && errores.some(error => error.param === 'nombre') ? 'error' : '')
+
+                // Fecha de nacimiento
+                div
+                    label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Ingresa tu fecha de nacimiento:
+                    input#fecha.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="fecha" value= usuario ? usuario.fecha : '' class=errores && errores.some(error => error.param === 'fecha') ? 'error' : '')
+
+                // Email
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Email de Registro :
-                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Email" type="email" name="email" value= usuario ? usuario.email : '')
+                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Email" type="email" name="email" value= usuario ? usuario.email : '' class=errores && errores.some(error => error.param === 'email') ? 'error' : '')
+
+                // Contraseña
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Contraseña :
-                    input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe la contraseña" type="password" name="password")
+                    input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe la contraseña" type="password" name="password" class=errores && errores.some(error => error.param === 'password') ? 'error' : '')
+
+                // Confirmar Contraseña
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Confirmar Contraseña :
-                    input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Confirma la contraseña" type="password" name="repeat_password")
+                    input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Confirma la contraseña" type="password" name="repeat_password" class=errores && errores.some(error => error.param === 'repeat_password') ? 'error' : '')
 
                 div.flex.items-center.justify-between
-                        a.text-gray-500.text-xs(href="/auth/login" class="hover:underline hover:decoration-2 hover:decoration-indigo-600") ¿Ya tienes una cuenta? Inicia Sesión 
-                        a.text-gray-500.text-xs(href='/auth/password' class="hover:underline hover:decoration-2 hover:decoration-indigo-600") Olvide mi Contraseña
+                    a.text-gray-500.text-xs(href="/auth/login" class="hover:underline hover:decoration-2 hover:decoration-indigo-600") ¿Ya tienes una cuenta? Inicia Sesión 
+                    a.text-gray-500.text-xs(href='/auth/password' class="hover:underline hover:decoration-2 hover:decoration-indigo-600") Olvide mi Contraseña
 
                 input(class="w-full bg-azulMunsell hover:bg-azulClaro text-blanco font-bold py-3 cursor-pointer"  type="submit" value="Crear Cuenta")
