@@ -32,25 +32,35 @@ block contenido
     div.mt-8.mx-auto.max-w-md
         .bg-blanco.py-8.px-4.shadow
             form.space-y-5(method="POST" action="/auth/registro" noValidate)
-                input(type="hidden" name="_csrf" value=csrfToken)                    
+                input(type="hidden" name="_csrf" value=csrfToken)
+                
+                // Nombre
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Tu Nombre :
-                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre" type="text" name="nombre" value= usuario ? usuario.nombre : '')
+                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre" type="text" name="nombre" value= usuario ? usuario.nombre : '' class=errores && errores.some(error => error.param === 'nombre') ? 'error' : '')
+
+                // Fecha de nacimiento
                 div
                     label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Ingresa tu fecha de nacimiento:
-                    input#fecha.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="fecha" value= usuario ? usuario.fecha : '')
+                    input#fecha.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="fecha" value= usuario ? usuario.fecha : '' class=errores && errores.some(error => error.param === 'fecha') ? 'error' : '')
+
+                // Email
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Email de Registro :
-                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Email" type="email" name="email" value= usuario ? usuario.email : '')
+                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Email" type="email" name="email" value= usuario ? usuario.email : '' class=errores && errores.some(error => error.param === 'email') ? 'error' : '')
+
+                // Contraseña
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Contraseña :
-                    input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe la contraseña" type="password" name="password")
+                    input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Escribe la contraseña" type="password" name="password" class=errores && errores.some(error => error.param === 'password') ? 'error' : '')
+
+                // Confirmar Contraseña
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold Confirmar Contraseña :
-                    input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Confirma la contraseña" type="password" name="repeat_password")
+                    input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Confirma la contraseña" type="password" name="repeat_password" class=errores && errores.some(error => error.param === 'repeat_password') ? 'error' : '')
 
                 div.flex.items-center.justify-between
-                        a.text-gray-500.text-xs(href="/auth/login" class="hover:underline hover:decoration-2 hover:decoration-indigo-600") ¿Ya tienes una cuenta? Inicia Sesión 
-                        a.text-gray-500.text-xs(href='/auth/password' class="hover:underline hover:decoration-2 hover:decoration-indigo-600") Olvide mi Contraseña
+                    a.text-gray-500.text-xs(href="/auth/login" class="hover:underline hover:decoration-2 hover:decoration-indigo-600") ¿Ya tienes una cuenta? Inicia Sesión 
+                    a.text-gray-500.text-xs(href='/auth/password' class="hover:underline hover:decoration-2 hover:decoration-indigo-600") Olvide mi Contraseña
 
                 input(class="w-full bg-azulMunsell hover:bg-azulClaro text-blanco font-bold py-3 cursor-pointer"  type="submit" value="Crear Cuenta")
